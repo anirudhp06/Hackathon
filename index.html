@@ -1,20 +1,38 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            Welcome To One Stop Solution
-        </title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-        <script type="module" src="js/firebase-code.js"></script>
-    </head>
-    <body>
-        <h1><center>Welcome to One Stop Solution for differently abled people</center></h1>
-        <h3>Where do you live?</h3>
-        <select id="places">
-            <option value="bangalore">Bangalore</option>
-            <option value="hubli">Hubballi</option>
-            <option value="selectcity" selected>Select your city</option>
+<head>
+    <title>Welcome To One Stop Solution</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1><center>Welcome to One Stop Solution for differently abled people</center></h1>
+    <label for="selection">Select an option:</label>
+    <select id="places" onchange="showDropdown()">
+        <option value="bangalore">Bangalore</option>
+        <option value="hubli">Hubballi</option>
+        <option value="selectcity" selected>Select your city</option>
+    </select><br><br>
+    <div id="myDropdown" class="dropdown">
+        <label for="option">What help do you need:</label>
+        <select id="option">
+            <option value="default">Choose option</option>
+            <option value="school" onchange="showBtn()">School for differently abled</option>
+            <option value="hospital" onchange="showBtn()">Hospital</option>
+            <option value="therapy" onchange="showBtn()">Therapy Session</option>
+            <option value="support" onchange="showBtn()">Support Groups</option>
+            <option value="activities" onchange="showBtn()">Recreational activities</option>
         </select>
-    </body>
+    </div>
+    <br><br>
+    <button id="Go"value="Find" onclick="loadPage()">Find</button>
+
+    <br><br>
+
+    <div id="schoolInfo" class="hidden">
+        <h3>School</h3>
+    </div>
+    <script src="js/backend.js"></script>
+</body>
 </html>
