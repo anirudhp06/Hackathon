@@ -22,8 +22,13 @@ function loadPage(){
 
 function loadSelection(value){
     var loc=document.getElementById("places").value;
+    var th=document.getElementById("therapyInfo");
+    var sk=document.getElementById("schoolInfo");
+    var act=document.getElementById("activityInfo");
+    var sup=document.getElementById("supportInfo");
+
     if(value=="school" && loc=="bangalore"){
-        alert(loc+" selected");
+        console.log(loc+" selected");
         fetch('skulBLR.html')
         .then(response=>response.text())
         .then(html=>{
@@ -32,8 +37,29 @@ function loadSelection(value){
         .catch(error=>{
             console.log('Error:',error);
         });
-        var show=document.getElementById("schoolInfo");
-        show.classList.remove("hidden");
+        sk.classList.remove("hidden");
+        /* hide all other fields */
+        th.classList.add("hidden");
+        act.classList.add("hidden");
+        sup.classList.add("hidden");
+        
+    }
+    else if(value=="therapy" && loc=="bangalore"){
+        console.log(loc+" selected");
+        fetch('therapyBLR.html')
+        .then(response=>response.text())
+        .then(html=>{
+            document.getElementById('therapyInfo').innerHTML=html;
+        })
+        .catch(error=>{
+            console.log('Error:',error);
+        });
+        
+        th.classList.remove("hidden");
+        /* hide all other fields */
+        sk.classList.add("hidden");
+        act.classList.add("hidden");
+        sup.classList.add("hidden");
     }
     else{
         alert(value+" body still not created");
