@@ -21,8 +21,21 @@ function loadPage(){
 }
 
 function loadSelection(value){
-    if(value==="school"){
+    var loc=document.getElementById("places").value;
+    if(value=="school" && loc=="bangalore"){
+        alert(loc+" selected");
+        fetch('skulBLR.html')
+        .then(response=>response.text())
+        .then(html=>{
+            document.getElementById('schoolInfo').innerHTML=html;
+        })
+        .catch(error=>{
+            console.log('Error:',error);
+        });
         var show=document.getElementById("schoolInfo");
         show.classList.remove("hidden");
+    }
+    else{
+        alert(value+" body still not created");
     }
 }
