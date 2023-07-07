@@ -15,7 +15,6 @@ function loadPage(){
         alert("Please select all the option and then proceed.");
     }
     else{
-        alert("Fetching based on your choices.");
         loadSelection(value);
     }
 }
@@ -61,7 +60,23 @@ function loadSelection(value){
         act.classList.add("hidden");
         sup.classList.add("hidden");
     }
+    else if(value=="support" && loc=="hubli"){
+        console.log(loc+" selected");
+        fetch('supportHBX.html')
+        .then(response=>response.text())
+        .then(html=>{
+            document.getElementById('supportInfo').innerHTML=html;
+        })
+        .catch(error=>{
+            console.log('Error:',error);
+        });
+        sup.classList.remove("hidden");
+
+        th.classList.add("hidden");
+        sk.classList.add("hidden");
+        act.classList.add("hidden");
+    }
     else{
-        alert(value+" body still not created");
+        alert(value+" information still not loaded.");
     }
 }
